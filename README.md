@@ -15,7 +15,11 @@ speaker.
 distance with no interrupts used.
 
 Uses Raspberry Pi B+
+
 pin 21 - trigger on sensor
+
 pin 20 - echo on sensor
+
 pin 26 - speaker output
+
 
