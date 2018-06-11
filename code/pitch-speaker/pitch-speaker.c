@@ -145,13 +145,13 @@ void takeMeasurement() {
   while(1) {
     distance = measure();
 
-    playPeriod(distance/2 ,100000); 
+    playPeriod(distance, distance * 15);
+    //playPeriod(distance/2 ,10000); 
   }
 
   do {
     write_i2c_reg8(0x04, 0x90);
   } while (read_i2c_reg8(0x06) != 0);
-  
 }
 
 
@@ -187,7 +187,7 @@ void notmain(void) {
 	  playPeriod(i, 10000);
 	}
 	*/
-	  
+	
 	power_up();
 
 	takeMeasurement();

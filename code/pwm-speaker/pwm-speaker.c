@@ -23,41 +23,6 @@ static volatile unsigned off,	   // led off for this many ticks
 
 static const unsigned lis3dh_addr = 0x4C; 
 
-// RPI states we have to have memory barriers when switching peripherals.
-// no one seems to do this.   currently experimenting.  uncommment this
-// if you want to use mem-barriers.
-#define mb() do { } while(0)
-
-static unsigned mb_get_time(void) {
-	mb();
-	unsigned t = timer_get_time();
-	mb();
-	return t;
-
-}
-static unsigned mb_read(int pin) {
-	mb();
-	unsigned v = gpio_read(pin);
-	mb();
-	return v;
-}
-
-static int timeout_read(int pin, int v, unsigned timeout) {
-	unsigned start = mb_get_time();
-	while(1) {
-		if(mb_read(pin) != v)
-			return 1;
-		if(mb_get_time() - start > timeout)
-			return 0;
-	}
-}
-
-static void mb_write(int pin, int v) {
-	mb();
-        gpio_write(pin, v);
-	mb();
-}
-
 /************************************************************************8888
  * I2C helpers.
  */
