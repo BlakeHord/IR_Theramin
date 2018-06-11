@@ -1,0 +1,100 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALT0	gpio.h	7;"	d
+ALT1	gpio.h	8;"	d
+ALT2	gpio.h	9;"	d
+ALT3	gpio.h	10;"	d
+ALT4	gpio.h	11;"	d
+ALT5	gpio.c	/^enum { INPUT = 0, OUTPUT = 1, ALT5 = 2 };$/;"	e	enum:__anon1	file:
+ALT5	gpio.h	12;"	d
+ALT5	uart.c	9;"	d	file:
+AUX_ENABLES	uart.c	26;"	d	file:
+AUX_MU_CNTL_RX_ENABLE	uart.c	46;"	d	file:
+AUX_MU_CNTL_TX_ENABLE	uart.c	45;"	d	file:
+AUX_MU_ENABLE	uart.c	27;"	d	file:
+AUX_MU_IIR_RX_FIFO_CLEAR	uart.c	34;"	d	file:
+AUX_MU_IIR_RX_FIFO_ENABLE	uart.c	36;"	d	file:
+AUX_MU_IIR_TX_FIFO_CLEAR	uart.c	35;"	d	file:
+AUX_MU_IIR_TX_FIFO_ENABLE	uart.c	37;"	d	file:
+AUX_MU_LCR_8BIT	uart.c	39;"	d	file:
+AUX_MU_LSR_RX_READY	uart.c	41;"	d	file:
+AUX_MU_LSR_TX_EMPTY	uart.c	43;"	d	file:
+AUX_MU_LSR_TX_READY	uart.c	42;"	d	file:
+AUX_MU_UART	uart.c	32;"	d	file:
+AUX_SPI0_ENABLE	uart.c	28;"	d	file:
+AUX_SPI1_ENABLE	uart.c	29;"	d	file:
+GET32	helpers.s	/^GET32:$/;"	l
+GETPC	helpers.s	/^GETPC:$/;"	l
+GPIO_DEFS	gpio.h	2;"	d
+INPUT	gpio.c	/^enum { INPUT = 0, OUTPUT = 1, ALT5 = 2 };$/;"	e	enum:__anon1	file:
+INPUT	gpio.h	5;"	d
+M_PI	rpi.h	5;"	d
+NAME	printf.c	156;"	d	file:
+NAME	printf.c	158;"	d	file:
+OUTPUT	gpio.c	/^enum { INPUT = 0, OUTPUT = 1, ALT5 = 2 };$/;"	e	enum:__anon1	file:
+OUTPUT	gpio.h	6;"	d
+PRINTF_DEFS	printf.h	2;"	d
+PULLDOWN	gpio.h	15;"	d
+PULLUP	gpio.h	16;"	d
+PUT16	helpers.s	/^PUT16:$/;"	l
+PUT32	helpers.s	/^PUT32:$/;"	l
+PUT8	helpers.s	/^PUT8:$/;"	l
+RX	uart.c	7;"	d	file:
+TX	uart.c	6;"	d	file:
+UART	uart.c	/^struct UART {$/;"	s	file:
+UART_DEFS	uart.h	2;"	d
+_cstart	cstart.c	/^void _cstart() {$/;"	f
+_start	start.s	/^_start:$/;"	l
+assert	printf.h	28;"	d
+baud	uart.c	/^    int baud; \/\/ baud rate register$/;"	m	struct:UART	file:
+cntl	uart.c	/^    int cntl; \/\/ control register$/;"	m	struct:UART	file:
+cos	libm.c	/^float cos(float x) {$/;"	f
+data	uart.c	/^    int data; \/\/ I\/O Data$/;"	m	struct:UART	file:
+debug	printf.h	16;"	d
+debug	printf.h	19;"	d
+delay	timer.c	/^void delay(unsigned ticks) {$/;"	f
+dmb	mem-barrier.s	/^dmb:$/;"	l
+dummy	helpers.s	/^dummy:$/;"	l
+emit	printf.c	/^static char* emit(unsigned base, char *dst, int n, int val, int width) {$/;"	f	file:
+fabs	libm.c	/^float fabs(float f) { return (f < 0.0) ? -f : f; }$/;"	f
+floor	libm.c	/^float floor(float f) {$/;"	f
+gpio_base	gpio.c	/^volatile unsigned * const gpio_base = (void*)0x20200008;$/;"	v
+gpio_hi	gpio.c	/^volatile unsigned * const gpio_hi = (void*)0x2020001C;$/;"	v
+gpio_lo	gpio.c	/^volatile unsigned * const gpio_lo = (void*)0x20200028;$/;"	v
+gpio_sel1	gpio.c	/^volatile unsigned * const gpio_sel1 = (void*)0x20200004;$/;"	v
+ier	uart.c	/^    int ier;  \/\/ Interupt enable$/;"	m	struct:UART	file:
+iir	uart.c	/^    int iir;  \/\/ Interupt identify and fifo enables\/clears$/;"	m	struct:UART	file:
+inf	start.s	/^inf: b inf$/;"	l
+isdigit	printf.c	/^static int isdigit(unsigned char c) { return c >= '0' && c <= '9'; }$/;"	f	file:
+lcr	uart.c	/^    int lcr;  \/\/ line control register$/;"	m	struct:UART	file:
+lsr	uart.c	/^    int lsr;  \/\/ line status$/;"	m	struct:UART	file:
+main	printf.c	/^int main() { $/;"	f
+mb	mem-barrier.s	/^mb:$/;"	l
+mcr	uart.c	/^    int mcr;  \/\/ modem control register$/;"	m	struct:UART	file:
+memset	memset.c	/^void *memset(void *_p, int c, unsigned n) {$/;"	f
+msr	uart.c	/^    int msr;  \/\/ line status$/;"	m	struct:UART	file:
+pad	printf.c	/^static char* pad(char *p,  char *base, int width) {$/;"	f	file:
+panic	printf.c	/^void (panic)(const char *file, int lineno, const char *msg) {$/;"	f
+panic	printf.h	22;"	d
+pinMode	gpio.c	/^void pinMode( int pin, int mode )$/;"	f
+pinWrite	gpio.c	/^void pinWrite( int pin, int value )$/;"	f
+printf	printf.c	/^int NAME(printf)(const char *fmt, ...) {$/;"	f
+putchar	printf.c	/^void putchar (int c) { uart_putc(c); } $/;"	f
+puts	printf.c	/^void NAME(puts)(char *p) {$/;"	f
+reboot	reboot.c	/^void reboot(void) {$/;"	f
+reverse	printf.c	/^static char* reverse(char *dst, int n, char *p, char *start) {$/;"	f	file:
+scratch	uart.c	/^    int scratch;$/;"	m	struct:UART	file:
+sin	libm.c	/^float sin(float x) {$/;"	f
+snprintf	printf.c	/^int NAME(snprintf)(char *buf, int n, const char *fmt, ...) {$/;"	f
+stat	uart.c	/^    int stat; \/\/ status register$/;"	m	struct:UART	file:
+strcmp	strcmp.c	/^int strcmp(const char *a, const char *b) {$/;"	f
+uart	uart.c	/^volatile struct UART *uart = (struct UART*) AUX_MU_UART;$/;"	v	typeref:struct:UART
+uart_flush	uart.c	/^void uart_flush ( void )$/;"	f
+uart_getc	uart.c	/^int uart_getc ( void )$/;"	f
+uart_init	uart.c	/^void uart_init ( void )$/;"	f
+uart_putc	uart.c	/^void uart_putc ( unsigned int c )$/;"	f
+va_printf	printf.c	/^static int va_printf(char *buf, int n, const char *fmt, va_list args) {$/;"	f	file:

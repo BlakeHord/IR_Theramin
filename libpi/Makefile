@@ -1,0 +1,70 @@
+LIB_OBJS = reboot.o timer.o printf.o uart.o cstart.o helpers.o mem-barrier.o cache.o  kalloc.o memset.o interrupts-asm.o interrupts-c.o timer-interrupt.o spi.o omar-i2c.o rpi-stdlib.o rpi-math.o
+
+EXTRA= gpio.o gpioextra.o
+FPEXTRA= fp-gpio.o fp-gpioextra.o
+
+SRC = $(LIB_OBJS:.o=.c)
+
+ARM = arm-none-eabi
+CC = $(ARM)-gcc
+LD  = $(ARM)-ld
+AS  = $(ARM)-as
+OD  = $(ARM)-objdump
+OCP = $(ARM)-objcopy
+# CFLAGS = -Wall -Og -std=gnu99  -nostdlib -nostartfiles -ffreestanding  -mapcs-frame -fno-omit-frame-pointer -ffunction-sections -fdata-sections  -msoft-float
+CFLAGS = -I. -Wall -O2 -std=gnu99 -nostdlib -nostartfiles -ffreestanding $(EXTRAFLAGS) -march=armv6  -Wno-unused-function
+
+FPFLAGS= -mfloat-abi=hard   -march=armv6 -mfpu=vfp  -DUSE_FLOAT
+
+all : libpi.a start.o fp-start.o  
+
+fplib: libpi.a
+	# hack to recompile with fp.
+	make libpi.a
+	make clean
+	make "EXTRAFLAGS = $(FPFLAGS)" "EXTRA=$(FPEXTRA)" libpi-fp.a
+	rm -f $(LIB_OBJS)
+
+start.o:
+	$(AS) $(ASFLAGS) start.s -o start.o
+
+fp-start.o:
+	$(AS) $(ASFLAGS) -mfloat-abi=hard   -march=armv6 -mfpu=vfp  fp-start.s -o fp-start.o
+
+.s.o:
+	$(AS) $(ASFLAGS) $< -o $@ 
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< 
+
+libpi.a: $(LIB_OBJS)  start.o $(EXTRA)
+	arm-none-eabi-ar crf libpi.a $^ $(EXTRA) 
+	$(OD) -D $@ > $@.list
+
+libpi-fp.a: $(LIB_OBJS)  start.o $(FPEXTRA)
+	arm-none-eabi-ar crf libpi-fp.a $^ $(FPEXTRA) 
+	$(OD) -D $@ > $@.list
+
+clean :
+	rm -f $(LIB_OBJS) start.o *.bin *.hex *.elf *.list *.img *.bc *.clang.s *~ libpi.a libpi-fp.a fp-start.o
+
+depend: 
+	makedepend $(SRC)
+# DO NOT DELETE
+
+reboot.o: rpi.h printf.h uart.h kalloc.h timer.h mem-barrier.h
+timer.o: rpi.h printf.h uart.h kalloc.h timer.h mem-barrier.h
+printf.o: uart.h printf.h
+uart.o: gpio.h gpioextra.h uart.h mem-barrier.h
+kalloc.o: rpi.h printf.h uart.h kalloc.h timer.h mem-barrier.h
+memset.o: rpi.h printf.h uart.h kalloc.h timer.h mem-barrier.h
+interrupts-c.o: rpi-interrupts.h rpi.h printf.h uart.h kalloc.h timer.h
+interrupts-c.o: mem-barrier.h
+timer-interrupt.o: rpi.h printf.h uart.h kalloc.h timer.h mem-barrier.h
+timer-interrupt.o: timer-interrupt.h rpi-armtimer.h rpi-interrupts.h
+spi-simple.o: rpi.h printf.h uart.h kalloc.h timer.h mem-barrier.h spi.h
+spi-simple.o: gpio.h gpioextra.h
+i2c.o: rpi.h printf.h uart.h kalloc.h timer.h mem-barrier.h rpi-assert.h
+i2c.o: gpio.h rpi-stdlib.h
+rpi-stdlib.o: rpi-stdlib.h rpi.h printf.h uart.h kalloc.h timer.h
+rpi-stdlib.o: mem-barrier.h
