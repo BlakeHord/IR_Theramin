@@ -9,10 +9,8 @@
 
 
 #define N 8000
-const unsigned trigger = 21,
-	      echo = 20,
-              speaker = 26,
-	      max_dist = N;
+const unsigned speaker = 26,
+	       max_dist = N;
 
 static volatile int distance;  	// current measured sonar distance
 static volatile unsigned off,	   // led off for this many ticks
@@ -255,9 +253,6 @@ void notmain(void) {
 	timer_interrupt_init(0x1);
   
 	gpio_set_function(speaker, GPIO_FUNC_OUTPUT);
-	gpio_set_function(trigger, GPIO_FUNC_OUTPUT);
-	gpio_set_function(echo, GPIO_FUNC_INPUT);
-	gpio_set_pulldown(echo);
 
 	enable_cache();
   

@@ -7,9 +7,7 @@
 #include "i2c.h"
 
 
-const unsigned trigger = 21,
-	      echo = 20,
-              speaker = 26;
+const unsigned speaker = 26;
 
 static volatile int distance;  	// current measured sonar distance
 static const unsigned lis3dh_addr = 0x4C; 
@@ -161,9 +159,6 @@ void notmain(void) {
 	gpio_init();
   
 	gpio_set_function(speaker, GPIO_FUNC_OUTPUT);
-	gpio_set_function(trigger, GPIO_FUNC_OUTPUT);
-	gpio_set_function(echo, GPIO_FUNC_INPUT);
-	gpio_set_pulldown(echo);
 
 	enable_cache();
   
